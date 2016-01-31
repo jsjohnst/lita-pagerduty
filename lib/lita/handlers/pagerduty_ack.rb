@@ -11,7 +11,7 @@ module Lita
       include ::PagerdutyHelper::Utility
 
       route(
-        /^pager\sack\sall$/,
+        /^#{config.cmd_prefix}\sack\sall$/,
         :ack_all,
         command: true,
         help: {
@@ -20,7 +20,7 @@ module Lita
       )
 
       route(
-        /^pager\sack\smine$/,
+        /^#{config.cmd_prefix}\sack\smine$/,
         :ack_mine,
         command: true,
         help: {
@@ -29,7 +29,7 @@ module Lita
       )
 
       route(
-        /^pager\sack\s#{INCIDENT_ID_PATTERN}$/,
+        /^#{config.cmd_prefix}\sack\s#{INCIDENT_ID_PATTERN}$/,
         :ack,
         command: true,
         help: {

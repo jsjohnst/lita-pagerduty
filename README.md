@@ -26,6 +26,11 @@ config.handlers.pagerduty.api_key   = ''
 config.handlers.pagerduty.subdomain = ''
 ```
 
+Optional:
+```ruby
+config.handlers.pagerduty.cmd_prefix = 'pagerduty' # set this to what you want the module to respond as
+```
+
 ## Usage
 
 ### Specific incidents
