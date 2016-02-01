@@ -17,6 +17,9 @@ Add lita-pagerduty to your Lita instance's Gemfile:
 gem "lita-pagerduty"
 ```
 
+Please note, this fork of the module requires an updated version of Lita from:
+https://github.com/litaio/lita/pull/174
+
 ## Configuration
 
 Add the following variables to your Lita config file:

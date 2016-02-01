@@ -11,7 +11,7 @@ module Lita
       include ::PagerdutyHelper::Utility
 
       route(
-        /^#{config.cmd_prefix}\snotes\s#{INCIDENT_ID_PATTERN}$/,
+        ->(msg) { msg.body =~ /^#{config.cmd_prefix}\snotes\s#{INCIDENT_ID_PATTERN}$/ },
         :notes,
         command: true,
         help: {
@@ -20,7 +20,7 @@ module Lita
       )
 
       route(
-        /^#{config.cmd_prefix}\snote\s#{INCIDENT_ID_PATTERN}\s(.+)$/,
+        ->(msg) { msg.body =~ /^#{config.cmd_prefix}\snote\s#{INCIDENT_ID_PATTERN}\s(.+)$/ },
         :note,
         command: true,
         help: {

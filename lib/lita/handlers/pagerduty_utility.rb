@@ -8,7 +8,7 @@ module Lita
     class PagerdutyUtility < Handler
       config :api_key, required: true
       config :subdomain, required: true
-      config :cmd_prefix, default: 'pager'
+      config :cmd_prefix, default: 'pager', type: String
 
       namespace 'Pagerduty'
 
@@ -17,7 +17,7 @@ module Lita
       include ::PagerdutyHelper::Utility
 
       route(
-        /^#{config.cmd_prefix}\soncall$/,
+        ->(msg) { msg.body =~ /^#{config.cmd_prefix}\soncall$/ },
         :on_call_list,
         command: true,
         help: {
@@ -26,7 +26,7 @@ module Lita
       )
 
       route(
-        /^#{config.cmd_prefix}\soncall\s(.*)$/,
+        ->(msg) { msg.body =~ /^#{config.cmd_prefix}\soncall\s(.*)$/ },
         :on_call_lookup,
         command: true,
         help: {
@@ -35,7 +35,7 @@ module Lita
       )
 
       route(
-        /^#{config.cmd_prefix}\sidentify\s#{EMAIL_PATTERN}$/,
+        ->(msg) { msg.body =~ /^#{config.cmd_prefix}\sidentify\s#{EMAIL_PATTERN}$/ },
         :identify,
         command: true,
         help: {
@@ -44,7 +44,7 @@ module Lita
       )
 
       route(
-        /^#{config.cmd_prefix}\sforget$/,
+        ->(msg) { msg.body =~ /^#{config.cmd_prefix}\sforget$/ },
         :forget,
         command: true,
         help: {
